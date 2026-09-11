@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE LAM ARCHIVE</title>
+<style>
+body{background:#050505;color:#ddd;font-family:monospace;max-width:850px;margin:0 auto;padding:40px 20px}
+h1{letter-spacing:8px;text-align:center;color:#eee}.box{border:1px solid #444;padding:25px;margin:25px 0}
+code,pre{white-space:pre-wrap;word-break:break-word;color:#aaa}
+input{background:#090909;border:1px solid #555;color:#fff;padding:12px;width:70%;font-family:monospace}
+button{padding:12px 18px;background:#ddd;border:0;font-family:monospace;cursor:pointer}
+.hidden{display:none}.ok{color:#aaa}.err{color:#777}
+</style>
+</head>
+<body>
+<h1>THE LAM ARCHIVE</h1>
+<div class="box" id="level1">
+<h2>LEVEL 01 // BEGIN</h2>
+<pre>
+01001100 01100001 01101101
+00100000
+01100010 01101001
+00100000
+01100111 01101111 01101001
+00100000
+01001110 01001000 01000001
+</pre>
+<p>Decode what you see.</p>
+<input id="a1" placeholder="answer">
+<button onclick="check(1)">ENTER</button><p id="m1"></p>
+</div>
+
+<div class="box hidden" id="level2">
+<h2>LEVEL 02 // THE SHIFT</h2>
+<pre>
+ODP EL JR LQKD
+</pre>
+<p>Caesar. The key was hidden in the previous answer.</p>
+<input id="a2" placeholder="answer">
+<button onclick="check(2)">ENTER</button><p id="m2"></p>
+</div>
+
+<div class="box hidden" id="level3">
+<h2>LEVEL 03 // THE VOICE</h2>
+<pre>
+.-.. .- --
+-... ..
+--. --- ..
+.-..
+
+ᛚ ᚨ ᛗ
+</pre>
+<p>Two languages speak the same message.</p>
+<input id="a3" placeholder="answer">
+<button onclick="check(3)">ENTER</button><p id="m3"></p>
+</div>
+
+<div class="box hidden" id="level4">
+<h2>LEVEL 04 // 3301</h2>
+<pre>
+4C 83 82 20 62 88 20 67 8D
+20 6C 61 20 65 6D 20 79 65 75
+
+THE KEY IS BURIED
+INSIDE THE MESSAGE.
+</pre>
+<p>One final answer.</p>
+<input id="a4" placeholder="answer">
+<button onclick="check(4)">ENTER</button><p id="m4"></p>
+</div>
+
+<script>
+const answers=[
+"lam bi goi nha",
+"lam bi goi la",
+"lam bi goi la",
+"lam bi goi la em yeu"
+];
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim()}
+function check(n){
+ let v=norm(document.getElementById("a"+n).value);
+ let m=document.getElementById("m"+n);
+ if(v===norm(answers[n-1])){
+   m.className="ok";m.textContent="ACCESS GRANTED.";
+   if(n<4) document.getElementById("level"+(n+1)).classList.remove("hidden");
+   else {m.textContent="ACCESS GRANTED. FINAL MESSAGE: Lâm bị gọi là em yêu";}
+ }else{m.className="err";m.textContent="ACCESS DENIED."}
+}
+</script>
+</body>
+</html>
