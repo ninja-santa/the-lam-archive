@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>THE LAM ARCHIVE // 3301</title><style>body{background:#050505;color:#ddd;font-family:monospace;max-width:900px;margin:auto;padding:35px 20px}h1{text-align:center;letter-spacing:7px}.box{border:1px solid #444;padding:22px;margin:22px 0}pre{white-space:pre-wrap;line-height:1.7;color:#aaa}.hidden{display:none}input{background:#090909;border:1px solid #555;color:#fff;padding:11px;width:65%;font-family:monospace}button{padding:11px 16px;border:0;font-family:monospace;cursor:pointer}.ok{color:#aaa}.err{color:#777}.hint{color:#666;font-size:13px}</style></head><body><h1>THE LAM ARCHIVE</h1>
+<div class="box" id="level1"><h2>LEVEL 01 // BEGIN</h2><pre>01001100 01000001 01001101
+00100000
+01000010 01001001
+00100000
+01000111 01001111 01001001
+00100000
+01001100 01000001</pre><p>8 bits. Read as ASCII.</p><input id="a1" placeholder="answer"><button onclick="check(1)">ENTER</button><p id="m1"></p></div>
+<div class="box hidden" id="level2"><h2>LEVEL 02 // ROMAN</h2><pre>XII - I - XIII / II - IX / VII - XV - IX / XII - I</pre><p>Convert Roman numerals → numbers → A1Z26.</p><input id="a2" placeholder="answer"><button onclick="check(2)">ENTER</button><p id="m2"></p></div>
+<div class="box hidden" id="level3"><h2>LEVEL 03 // THE VOICE</h2><pre>.-.. .- -- / -... .. / --. --- .. / .-..
+
+ᛚ ᚨ ᛗ / ᛒ ᛁ / ᚷ ᛟ ᛁ / ᛚ</pre><p>Morse and runes say the same thing. Use the previous phrase.</p><input id="a3" placeholder="answer"><button onclick="check(3)">ENTER</button><p id="m3"></p></div>
+<div class="box hidden" id="level4"><h2>LEVEL 04 // 3301</h2><pre>01000101 01001101 / 01011001 01000101 01010101
+
+Caesar: HPL HVX FZL FN
+Key: 3</pre><p>Decode the binary first, then shift the Caesar text back by 3.</p><input id="a4" placeholder="answer"><button onclick="check(4)">ENTER</button><p id="m4"></p></div>
+<script>const answers=['lam bi goi la','lam bi goi la','lam bi goi la','lam bi goi la em yeu'];function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim()}function check(n){let v=norm(document.getElementById('a'+n).value),m=document.getElementById('m'+n);if(v===norm(answers[n-1])){m.className='ok';m.textContent=n===4?'ACCESS GRANTED. FINAL MESSAGE: Lâm bị gọi là em yêu':'ACCESS GRANTED. NEXT LEVEL UNLOCKED.';if(n<4)document.getElementById('level'+(n+1)).classList.remove('hidden')}else{m.className='err';m.textContent='ACCESS DENIED.'}}</script></body></html>
